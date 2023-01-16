@@ -1,5 +1,6 @@
 <template>
-   <div class="p-4">
+   <section>
+    <div class="p-4" v-for="flower in flowersList" :key="flower">
     <div class="max-w-sm rounded overflow-hidden shadow-lg mb-4">
       <img
         class="w-full"
@@ -7,7 +8,7 @@
         alt="Sunset in the mountains"
       />
       <div class="px-6 py-4 pb-2">
-        <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+        <div class="font-bold text-xl mb-2">Flower: {{flower}}</div>
         <p class="text-gray-700 text-base">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
           quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
@@ -21,4 +22,25 @@
       </div>
     </div>
   </div>
+   </section>
 </template>
+
+
+<script>
+
+import { useFlowersStore } from "./stores/flowers"
+
+export default {
+
+  setup() {
+    const flowersStore = useFlowersStore();
+
+    const flowersList = flowersStore.flowersList
+
+    return {
+      flowersList
+    }
+    
+  },
+}
+</script>
